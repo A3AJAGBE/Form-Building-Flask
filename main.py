@@ -1,6 +1,7 @@
 from flask import Flask, render_template
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, validators
+from flask_bootstrap import Bootstrap
 import os
 from dotenv import load_dotenv
 load_dotenv()
@@ -13,6 +14,7 @@ class LoginForm(FlaskForm):
 
 
 app = Flask(__name__)
+Bootstrap(app)
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
 app.config['SECRET_KEY'] = SECRET_KEY
