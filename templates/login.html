@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>A3AJAGBE Secrets | Log in</title>
+</head>
+<body>
+    <div class="container">
+		<h1>Login</h1>
+        <!-- This is where our form will go. -->
+        <form method="POST" action="">
+            {{ form.csrf_token }}
+            {{ form.email.label }} {{ form.email(size=30) }}
+            {{ form.password.label }} {{ form.password(size=30) }}
+            <input type="submit" value="Log in">
+        </form>
+    </div>
+</body>
+</html>
