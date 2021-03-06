@@ -1,6 +1,6 @@
 from flask import Flask, render_template
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField
+from wtforms import StringField, PasswordField, SubmitField
 import os
 from dotenv import load_dotenv
 load_dotenv()
@@ -9,6 +9,7 @@ load_dotenv()
 class LoginForm(FlaskForm):
     email = StringField('Name')
     password = PasswordField('Password')
+    submit = SubmitField('Log in')
 
 
 app = Flask(__name__)
