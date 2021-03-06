@@ -1,14 +1,14 @@
 from flask import Flask, render_template
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField
+from wtforms import StringField, PasswordField, SubmitField, validators
 import os
 from dotenv import load_dotenv
 load_dotenv()
 
 
 class LoginForm(FlaskForm):
-    email = StringField('Name')
-    password = PasswordField('Password')
+    email = StringField('Email', [validators.Email(message="That's not a valid email address.")])
+    password = PasswordField('Password', [validators.Length(min=8, message="Password must be at least 8 characters.")])
     submit = SubmitField('Log in')
 
 
@@ -26,6 +26,7 @@ def index():
 @app.route('/login', methods=('GET', 'POST'))
 def login():
     form = LoginForm()
+    form.validate_on_submit()
     return render_template('login.html', form=form)
 
 
