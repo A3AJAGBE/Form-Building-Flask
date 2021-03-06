@@ -26,7 +26,13 @@ def index():
 @app.route('/login', methods=('GET', 'POST'))
 def login():
     form = LoginForm()
-    form.validate_on_submit()
+    if form.validate_on_submit():
+        email = "admin@email.com"
+        password = "12345678"
+        if form.email.data == email and form.password.data == password:
+            return render_template('success.html')
+        else:
+            return render_template('denied.html')
     return render_template('login.html', form=form)
 
 
